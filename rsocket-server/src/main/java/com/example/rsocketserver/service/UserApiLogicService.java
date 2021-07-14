@@ -8,7 +8,7 @@ public class UserApiLogicService {
 
   public User read(Long id) {
     return User.builder()
-        .id(1L)
+        .id(id)
         .name("jang")
         .address("서울시")
         .build();

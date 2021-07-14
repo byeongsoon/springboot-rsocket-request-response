@@ -2,6 +2,7 @@ package com.example.rsocketclient.controller;
 
 import com.example.rsocketclient.model.entity.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +15,14 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/user")
 public class UserApiController {
 
+  @Autowired
   private final RSocketRequester requester;
 
   @GetMapping("{id}")
   Mono<User> findOneUserById(@PathVariable Long id) {
     return this.requester
         .route("request-response")
-        .data(id)
+        .data(new User(id))
         .retrieveMono(User.class);
   }
 

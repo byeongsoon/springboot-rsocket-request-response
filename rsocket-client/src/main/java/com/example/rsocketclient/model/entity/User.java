@@ -19,4 +19,8 @@ public class User {
 
   private String address;
 
+  public User(Long id) {
+    this.id = id;
+  }
+
 }
