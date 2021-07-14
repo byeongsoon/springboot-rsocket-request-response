@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
-public class UserApiContoller {
+public class UserApiController {
 
   private final RSocketRequester requester;
 
