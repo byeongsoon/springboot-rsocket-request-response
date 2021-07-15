@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/server/user")
@@ -16,7 +17,7 @@ public class UserApiController {
   private UserApiLogicService userApiLogicService;
 
   @GetMapping("{id}")
-  public User read(@PathVariable Long id) {
+  public Mono<User> read(@PathVariable Long id) {
     return userApiLogicService.read(id);
   }
 

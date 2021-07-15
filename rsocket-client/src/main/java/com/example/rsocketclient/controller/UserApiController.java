@@ -1,6 +1,7 @@
 package com.example.rsocketclient.controller;
 
 import com.example.rsocketclient.model.entity.User;
+import com.example.rsocketclient.model.newtwork.UserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.rsocket.RSocketRequester;
@@ -22,7 +23,8 @@ public class UserApiController {
   Mono<User> findOneUserById(@PathVariable Long id) {
     return this.requester
         .route("request-response")
-        .data(new User(id))
+        .data(new UserRequest(id))
+//        .data(id) // Read 할땐 사실 id만 보내서 결과값 받아도 된다.
         .retrieveMono(User.class);
   }
 
